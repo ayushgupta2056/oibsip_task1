@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: paycheck-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/paycheck}
+    username: ${DB_USERNAME:paycheck}
+    password: ${DB_PASSWORD:paycheck}
+  jpa:
+    hibernate:
+      ddl-auto: update   # creates the "payments" table automatically
+    open-in-view: false
+
+# Fraud rule settings (change them here, no code changes needed)
+paycheck:
+  fraud:
+    max-amount: 100000              # ₹1,00,000
+    blocked-countries: KP,IR        # 2-letter country codes
+    max-payments-per-minute: 3      # the 4th payment from a card within 1 minute is declined

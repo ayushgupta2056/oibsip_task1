@@ -1,0 +1,16 @@
+# Starts PostgreSQL for PayCheck API with one command:  docker compose up -d
+services:
+  postgres:
+    image: postgres:16
+    container_name: paycheck-postgres
+    environment:
+      POSTGRES_DB: paycheck
+      POSTGRES_USER: paycheck
+      POSTGRES_PASSWORD: paycheck
+    ports:
+      - "5432:5432"
+    volumes:
+      - paycheck-data:/var/lib/postgresql/data
+
+volumes:
+  paycheck-data:
